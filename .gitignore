@@ -40,6 +40,9 @@ htmlcov/
 .tox/
 .nox/
 
+# Temporary automation files
+.current_demo_info
+
 # IDE and Editor files
 .vscode/
 .idea/
