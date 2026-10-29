@@ -1,0 +1,73 @@
+{
+  "name": "Weekend Road Trip",
+  "participants": [
+    "Alice",
+    "Bob",
+    "Charlie",
+    "Diana"
+  ],
+  "expenses": [
+    {
+      "description": "Cabin Rental",
+      "payer": "Alice",
+      "amount": "600.00",
+      "category": "Lodging",
+      "split_type": "EQUAL",
+      "splits": []
+    },
+    {
+      "description": "Groceries & Snacks",
+      "payer": "Bob",
+      "amount": "185.50",
+      "category": "Food & Drinks",
+      "split_type": "EQUAL",
+      "splits": []
+    },
+    {
+      "description": "Gas & Highway Tolls",
+      "payer": "Charlie",
+      "amount": "90.00",
+      "category": "Transport",
+      "split_type": "EQUAL",
+      "splits": [
+        {
+          "participant": "Alice",
+          "value": null
+        },
+        {
+          "participant": "Bob",
+          "value": null
+        },
+        {
+          "participant": "Charlie",
+          "value": null
+        }
+      ]
+    },
+    {
+      "description": "Fine Dining Dinner",
+      "payer": "Diana",
+      "amount": "240.00",
+      "category": "Food & Drinks",
+      "split_type": "EXACT",
+      "splits": [
+        {
+          "participant": "Alice",
+          "value": "50.00"
+        },
+        {
+          "participant": "Bob",
+          "value": "75.00"
+        },
+        {
+          "participant": "Charlie",
+          "value": "45.00"
+        },
+        {
+          "participant": "Diana",
+          "value": "70.00"
+        }
+      ]
+    }
+  ]
+}

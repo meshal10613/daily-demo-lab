@@ -1,0 +1,7 @@
+# No external dependencies required!
+# This project uses Python standard libraries only:
+# - decimal (precise financial calculations)
+# - dataclasses (data structures)
+# - json (serialization)
+# - argparse (command-line interface)
+# - unittest (automated test suite)

@@ -12,7 +12,7 @@ All projects are indexed in [**`CATALOG.md`**](CATALOG.md).
 
 | Date | Project | Technology | Status |
 | :--- | :--- | :--- | :--- |
-| *(Demos will be listed chronologically here)* | | | |
+| **2026-10-29** | [Expense Splitter](projects/2026-10-29-expense-splitter) | Python 3 (CLI, Decimal, Greedy Graph Minimizer) | Passing ✅ |
 
 ---
 
@@ -46,6 +46,13 @@ To verify all projects follow the required structure and contain valid assets:
 python scripts/validate_demo.py
 # or on Windows with py launcher:
 py scripts/validate_demo.py
+```
+
+To run tests for a specific demo, navigate to its directory:
+
+```bash
+cd projects/2026-10-29-expense-splitter
+python -m unittest discover -s tests -p "test_*.py"
 ```
 
 ---
