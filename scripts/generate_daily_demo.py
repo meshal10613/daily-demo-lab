@@ -179,7 +179,12 @@ def build_fallback_demo(today_str: str, existing_names: List[str]) -> Dict[str, 
                     "    def test_alignment_render(self):\n"
                     "        table = MarkdownTable(headers=['A', 'B'], rows=[['1', '2']], alignments=['left', 'right'])\n"
                     "        res = table.render()\n"
-                    "        self.assertIn('---:', res)\n"
+                    "        self.assertIn('--:', res)\n"
+                    "        table_wide = MarkdownTable(headers=['ColA', 'ColB'], rows=[['1', '2']], alignments=['left', 'right'])\n"
+                    "        self.assertIn('---:', table_wide.render())\n\n"
+                    "    def test_center_alignment(self):\n"
+                    "        table = MarkdownTable(headers=['S'], rows=[['x']], alignments=['center'])\n"
+                    "        self.assertIn(':-:', table.render())\n"
                     "if __name__ == '__main__':\n"
                     "    unittest.main()\n"
                 ),
@@ -312,42 +317,54 @@ def build_fallback_demo(today_str: str, existing_names: List[str]) -> Dict[str, 
 
 def call_gemini_api(api_key: str, prompt: str) -> Optional[str]:
     """Calls Gemini API using google.genai SDK or direct HTTPS request."""
+    primary_model = os.environ.get("GEMINI_MODEL", "gemini-3.8-flash").strip()
+    model_candidates = [primary_model, "gemini-3.8-flash", "gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash"]
+    seen = set()
+    models = [m for m in model_candidates if m and not (m in seen or seen.add(m))]
+
     # Method 1: Try official google.genai SDK
     try:
         from google import genai
         client = genai.Client(api_key=api_key)
-        response = client.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=prompt,
-        )
-        if response and response.text:
-            return response.text
+        for model_name in models:
+            try:
+                response = client.models.generate_content(
+                    model=model_name,
+                    contents=prompt,
+                )
+                if response and response.text:
+                    print(f"Successfully received response from Gemini SDK using {model_name}")
+                    return response.text
+            except Exception as e:
+                print(f"DEBUG: google-genai SDK call with {model_name} notice: {e}")
     except Exception as e:
-        print(f"DEBUG: google-genai SDK call notice: {e}. Trying REST endpoint...")
+        print(f"DEBUG: google-genai SDK setup notice: {e}. Trying REST endpoint...")
 
     # Method 2: Try REST HTTPS request via urllib
-    try:
-        import urllib.request
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
-        payload = {
-            "contents": [{"parts": [{"text": prompt}]}],
-            "generationConfig": {"temperature": 0.4},
-        }
-        data_bytes = json.dumps(payload).encode("utf-8")
-        req = urllib.request.Request(
-            url,
-            data=data_bytes,
-            headers={"Content-Type": "application/json"},
-        )
-        with urllib.request.urlopen(req, timeout=45) as resp:
-            body = json.loads(resp.read().decode("utf-8"))
-            candidates = body.get("candidates", [])
-            if candidates:
-                parts = candidates[0].get("content", {}).get("parts", [])
-                if parts:
-                    return parts[0].get("text", "")
-    except Exception as e:
-        print(f"DEBUG: REST call failed: {e}")
+    import urllib.request
+    for model_name in models:
+        try:
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={api_key}"
+            payload = {
+                "contents": [{"parts": [{"text": prompt}]}],
+                "generationConfig": {"temperature": 0.4},
+            }
+            data_bytes = json.dumps(payload).encode("utf-8")
+            req = urllib.request.Request(
+                url,
+                data=data_bytes,
+                headers={"Content-Type": "application/json"},
+            )
+            with urllib.request.urlopen(req, timeout=45) as resp:
+                body = json.loads(resp.read().decode("utf-8"))
+                candidates = body.get("candidates", [])
+                if candidates:
+                    parts = candidates[0].get("content", {}).get("parts", [])
+                    if parts:
+                        print(f"Successfully received response from Gemini REST using {model_name}")
+                        return parts[0].get("text", "")
+        except Exception as e:
+            print(f"DEBUG: REST call with {model_name} failed: {e}")
 
     return None
 
@@ -491,6 +508,8 @@ def main() -> int:
     print(test_res.stdout)
     if test_res.returncode != 0:
         print(f"ERROR: Project unit tests failed:\n{test_res.stderr}")
+        import shutil
+        shutil.rmtree(project_dir, ignore_errors=True)
         return 1
     print("All project tests passed!")
 
@@ -500,6 +519,8 @@ def main() -> int:
     print(val_res.stdout)
     if val_res.returncode != 0:
         print(f"ERROR: Structure validation failed:\n{val_res.stderr}")
+        import shutil
+        shutil.rmtree(project_dir, ignore_errors=True)
         return 1
 
     # Update CATALOG.md and README.md
