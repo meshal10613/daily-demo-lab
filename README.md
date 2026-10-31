@@ -12,6 +12,7 @@ All projects are indexed in [**`CATALOG.md`**](CATALOG.md).
 
 | Date | Project | Technology | Status |
 | :--- | :--- | :--- | :--- |
+| **2026-10-31** | [Markdown Table Formatter](projects/2026-10-31-markdown-table-formatter) | Python 3 (Standard Library) | Passing ✅ |
 | **2026-10-30** | [Markdown Table Formatter](projects/2026-10-30-markdown-table-formatter) | Python 3 (Standard Library) | Passing ✅ |
 | **2026-10-29** | [Expense Splitter](projects/2026-10-29-expense-splitter) | Python 3 (CLI, Decimal, Greedy Graph Minimizer) | Passing ✅ |
 
