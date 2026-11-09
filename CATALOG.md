@@ -14,3 +14,4 @@ A collection of small, functional software projects.
 | 2026-11-06 | [Markdown Table Formatter](projects/2026-11-06-markdown-table-formatter) | CLI and library to parse, format, column-align, and sort Markdown tables. | Python 3 (Standard Library) | Passing |
 | 2026-11-07 | [Markdown Table Formatter](projects/2026-11-07-markdown-table-formatter) | CLI and library to parse, format, column-align, and sort Markdown tables. | Python 3 (Standard Library) | Passing |
 | 2026-11-08 | [CIDR Network Planner](projects/2026-11-08-cidr-network-planner) | A zero-dependency network planning and CIDR inspection utility for subnet analysis, IP range splitting, and collision auditing. | Python 3 (Standard Library) | Passing |
+| 2026-11-09 | [JSON Schema Inferrer & Validator](projects/2026-11-09-json-schema-infer) | Infers Draft-07 JSON schemas from single or multiple sample JSON documents with format detection and schema validation. | Python 3 (Standard Library) | Passing |
