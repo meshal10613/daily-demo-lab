@@ -17,3 +17,4 @@ A collection of small, functional software projects.
 | 2026-11-09 | [JSON Schema Inferrer & Validator](projects/2026-11-09-json-schema-infer) | Infers Draft-07 JSON schemas from single or multiple sample JSON documents with format detection and schema validation. | Python 3 (Standard Library) | Passing |
 | 2026-11-10 | [Markdown Table Formatter](projects/2026-11-10-markdown-table-formatter) | CLI and library to parse, format, column-align, and sort Markdown tables. | Python 3 (Standard Library) | Passing |
 | 2026-11-11 | [Markdown Table Formatter](projects/2026-11-11-markdown-table-formatter) | CLI and library to parse, format, column-align, and sort Markdown tables. | Python 3 (Standard Library) | Passing |
+| 2026-11-12 | [Markdown Table Formatter](projects/2026-11-12-markdown-table-formatter) | CLI and library to parse, format, column-align, and sort Markdown tables. | Python 3 (Standard Library) | Passing |
