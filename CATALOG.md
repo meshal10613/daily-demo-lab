@@ -23,3 +23,4 @@ A collection of small, functional software projects.
 | 2026-11-15 | [JWT Inspector & Dev Mint](projects/2026-11-15-jwt-inspector) | Decode, audit, verify, and mint JSON Web Tokens with security checks using pure Python standard library. | Python 3 (Standard Library) | Passing |
 | 2026-11-16 | [Markdown Table Formatter](projects/2026-11-16-markdown-table-formatter) | CLI and library to parse, format, column-align, and sort Markdown tables. | Python 3 (Standard Library) | Passing |
 | 2026-11-17 | [Markdown Table Formatter](projects/2026-11-17-markdown-table-formatter) | CLI and library to parse, format, column-align, and sort Markdown tables. | Python 3 (Standard Library) | Passing |
+| 2026-11-18 | [Markdown Table Formatter](projects/2026-11-18-markdown-table-formatter) | CLI and library to parse, format, column-align, and sort Markdown tables. | Python 3 (Standard Library) | Passing |
