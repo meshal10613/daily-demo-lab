@@ -24,3 +24,4 @@ A collection of small, functional software projects.
 | 2026-11-16 | [Markdown Table Formatter](projects/2026-11-16-markdown-table-formatter) | CLI and library to parse, format, column-align, and sort Markdown tables. | Python 3 (Standard Library) | Passing |
 | 2026-11-17 | [Markdown Table Formatter](projects/2026-11-17-markdown-table-formatter) | CLI and library to parse, format, column-align, and sort Markdown tables. | Python 3 (Standard Library) | Passing |
 | 2026-11-18 | [Markdown Table Formatter](projects/2026-11-18-markdown-table-formatter) | CLI and library to parse, format, column-align, and sort Markdown tables. | Python 3 (Standard Library) | Passing |
+| 2026-11-19 | [EnvGuard - Environment File Auditor & Linter](projects/2026-11-19-env-guard) | A zero-dependency CLI tool to validate, audit for secrets, diff against templates, and sanitize .env files for modern workflows. | Python 3 (Standard Library) | Passing |
