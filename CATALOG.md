@@ -28,3 +28,4 @@ A collection of small, functional software projects.
 | 2026-11-21 | [Markdown Table Formatter](projects/2026-11-21-markdown-table-formatter) | CLI and library to parse, format, column-align, and sort Markdown tables. | Python 3 (Standard Library) | Passing |
 | 2026-11-23 | [Markdown Table Formatter](projects/2026-11-23-markdown-table-formatter) | CLI and library to parse, format, column-align, and sort Markdown tables. | Python 3 (Standard Library) | Passing |
 | 2026-11-24 | [Markdown Table Formatter](projects/2026-11-24-markdown-table-formatter) | CLI and library to parse, format, column-align, and sort Markdown tables. | Python 3 (Standard Library) | Passing |
+| 2026-11-25 | [Markdown Table Formatter](projects/2026-11-25-markdown-table-formatter) | CLI and library to parse, format, column-align, and sort Markdown tables. | Python 3 (Standard Library) | Passing |
